@@ -1,3 +1,4 @@
+const html = require("html-webpack-plugin")
 const path = require("path")
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
   mode: "development",
   devtool: "source-map",
   devServer: {
-    port: 3000,
+    port: 3100,
     contentBase: path.join(__dirname, "app"),
     hot: true,
     historyApiFallback: { index: "index.html" }
