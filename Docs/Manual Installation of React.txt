@@ -1,0 +1,133 @@
+<h1> Recipe for Installing React Manually</h1>
+
+Create the root folder of the project with suitable descriptive name following the conventions
+
+<h2> Initialise the project with packages.json </h2>
+`>> npm init -y` 
+<p>this will create `packages.json` that will contain the list of all the packages installed. It is kind of blueprint</p>
+
+
+<h2> Install React and React DOM libraries </h2>
+`>> npm install react react-dom`
+
+<p>This command will download and install `react` and `react-dom` libraries in a folder named `node_modules` 
+
+
+
+<h2> Basic Structure </h2>
+<p>Create a folder and name it  <em>app</em> and then add two files in this folder namely <em>index.html</em> and <em>index.js</em></p>
+
+```
+app
+— index.html
+— index.js
+```
+
+
+
+
+
+
+
+——————————————————————————————————————————————————————————————— 
+
+<h3> Boilerplate Code for HTML </h3>
+<p>
+Add the following boilerplate html code in index.html </p>
+
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
+```
+
+
+<h3>Code for the index.js </h3>
+
+```
+import React from "react"
+import ReactDOM from "react-dom"
+
+function App(props) {
+  return (
+    <>
+      <h1>Hello from Moby</h1>
+    </>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById("root"))
+```
+
+<h2> Install Webpack </h2>
+
+```
+>> npm install webpack webpack-cli webpack-dev-server
+```
+
+<h2> Webpack Configuration File </h2>
+<p> In the root directory of the project, create a file named `webpack.config.js` and add the following code in it
+
+```
+const path = require("path")
+
+module.exports = {
+  entry: "./app/index.js",
+  output: {
+    publicPath: "/",
+    path: path.resolve(__dirname, "app"),
+    filename: "bundled.js"
+  },
+  mode: "development",
+  devtool: "source-map",
+  devServer: {
+    port: 3000,
+    contentBase: path.join(__dirname, "app"),
+    hot: true,
+    historyApiFallback: { index: "index.html" }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react", ["@babel/preset-env", { targets: { node: "12" } }]]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+<h3> Installing Babel </h3>
+Now we need to install babel as its required in the `webpack.config.js` using npm as follows
+`>> npm install @babel/core @babel/preset-env @babel/preset-react babel-loader `
+
+<h3> Modify  index.html</h3>
+Add following line in `index.html` before the `</body>` tag 
+`<script src="/bundled.js"></script>`
+
+
+<h2> Final Step: Modify the package.json </h2>
+Add the line `"dev": "webpack-dev-server"` in `packages.json` inside `"scripts"` tag, so it will look as follows
+
+```
+”scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server"
+  },
+```
+
+
+— The End —
