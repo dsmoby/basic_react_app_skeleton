@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import Header from "./components/header.component"
 import Footer from "./components/footer.component"
 import Content from "./components/content.component"
+import MyDate from "./components/date.component"
 //import "./index.css"
 
 function App(props) {
@@ -10,6 +11,7 @@ function App(props) {
   return (
     <div className="container">
       <Header />
+      <MyDate />
       <Content />
       <Footer />
     </div>
