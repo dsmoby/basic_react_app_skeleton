@@ -1,4 +1,12 @@
+body {
+  background-color: #050505;
+  padding: 5px;
+}
+
 .container {
   background-color: #101015;
   color: #d0ded0;
+  height: 100vh;
+  width: 100vw;
+  padding: 20px;
 }

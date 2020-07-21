@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 function Header(props) {
   return (
       <div>
-          <h1>This is header</h1>
+          <p>This is header</p>
       </div>
   )
 }

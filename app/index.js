@@ -1,6 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import Header from "./components/header.component"
+import Footer from "./components/footer.component"
+import Content from "./components/content.component"
 //import "./index.css"
 
 function App(props) {
@@ -8,7 +10,8 @@ function App(props) {
   return (
     <div className="container">
       <Header />
-      <h1>{message}</h1>
+      <Content />
+      <Footer />
     </div>
   )
 }
